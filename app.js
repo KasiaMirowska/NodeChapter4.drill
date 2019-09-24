@@ -17,16 +17,16 @@ app.get('/apps', (req, res) => {
      
     let { sort, genres } = req.query;
     let results;
-    sort = sort.toLowerCase();
+    console.log(sort)
     
     if(sort) {
-        if(!['app','rating'].includes(sort)) {
+        if(!['app','rating','App','Rating'].includes(sort)) {
             return res.status(400).send('Sort must be one of app or rating');
         };
-        if(sort === 'app') {
+        if(sort.toLowerCase() === 'app') {
             console.log(sort, 'HERE 2')
             results = appList.sort((a,b) => {
-                return a[sort] > b[sort]? 1 : a[sort] < b[sort]? -1 : 0;
+                return a['App'] > b['App'] ? 1 : a['App'] < b['App'] ? -1 : 0;
             })
         }
         if(sort === 'rating') {
