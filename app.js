@@ -6,12 +6,6 @@ const appList = require('./appsList');
 
 app.use(morgan('dev'));
 
-
-
-app.listen(8000, () => {
-    console.log('server is listening on port 8000')
-});
-
 app.get('/apps', (req, res) => {
     const genresArr = ['Action', 'Puzzle', 'Strategy', 'Casual', 'Arcade', 'Card']
      
@@ -55,3 +49,5 @@ app.get('/apps', (req, res) => {
     
     res.json(results);
 })
+
+module.exports = app;
